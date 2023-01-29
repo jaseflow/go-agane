@@ -19,7 +19,7 @@
 }
 
 .label input {
-  appearance: none;
+  display: none;
 }
 
 .label--checked {
