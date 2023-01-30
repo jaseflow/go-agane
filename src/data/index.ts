@@ -120,7 +120,6 @@ const FACTIONS = [
         classes: [
           'Warrior',
           'Rogue',
-          'Priest',
           'Mage',
           'Warlock'
         ]
