@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
 import hcLogo from './assets/hc-badge.png'
+import alliance from './assets/alliance.png';
+import horde from './assets/horde.png';
 import './App.css'
 
 import { CLASSES, FACTIONS } from './data';
@@ -23,22 +25,24 @@ function App() {
   return (
     <div className="App">
       <div>
-        <img src={hcLogo} alt="" width={250} style={{ marginRight: '-15px', marginBottom: '40px'}}/>
+        <img src={hcLogo} alt="" width={150} style={{ marginRight: '-15px', marginBottom: '60px'}}/>
         <div className="factions">
           <label htmlFor="factionAny" className={`label ${faction === 'any' ? 'label--checked' : ''}`}>
             <input type="radio" id="factionAny" value="any" onChange={() => setFaction('any')} checked={faction === 'any'} />
             Any faction
           </label>
           <label htmlFor="factionAlliance" className={`label ${faction === 'alliance' ? 'label--checked' : ''}`}>
+            <img src={alliance} alt="" width={20} />
             <input type="radio" id="factionAlliance" value="alliance" onChange={() => setFaction('alliance')} checked={faction == 'alliance' }/>
             Alliance
           </label>
           <label htmlFor="factionHorde" className={`label ${faction === 'horde' ? 'label--checked' : ''}`}>
+            <img src={horde} alt="" width={20} />
             <input type="radio" id="factionHorde" value="horde" onChange={() => setFaction('horde')} checked={faction === 'horde'} />
             Horde
           </label>
         </div>
-        <button onClick={generate} className={faction}>Go agane</button>
+        <button onClick={generate} className={faction}>Start your adventure</button>
         {toon &&  
           <div className="toon">
             <h2>{toon}</h2>

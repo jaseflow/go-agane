@@ -9,6 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   padding: 10px 20px;
   border-radius: 10px;
   background: rgba(255,255,255,0.03);
@@ -24,6 +25,7 @@
 
 .label--checked {
   background: rgba(255,255,255,0.15);
+  border: 1px solid #fff;
 }
 
 .factions {
@@ -46,12 +48,12 @@
 }
 
 button.alliance {
-  background: #0042DD;
+  background: #0078ff;
 }
 
 
 button.horde {
-  background: #C41E3A;
+  background: #b30000;
 }
 
 @media(min-width: 768px) {
