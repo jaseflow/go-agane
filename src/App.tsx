@@ -1,17 +1,20 @@
-import { useState, useEffect } from 'react'
-import hcLogo from './assets/hc-badge.png'
+import { useState, useEffect } from 'react';
+import logo from './assets/logo.svg';
 import alliance from './assets/alliance.png';
 import horde from './assets/horde.png';
-import './App.css'
+import './App.css';
 
 import { CLASSES, FACTIONS } from './data';
 
 function App() {
   const [faction, setFaction] = useState('any');
-  const [toon, setToon] = useState<string>();
+  const [spec, setSpec] = useState<string>()
+  const [race, setRace] = useState<string>()
+  const [toonClass, setToonClass] = useState<string>()
+  const [toonCoverUrl, setToonCoverUrl] = useState<string>();
+  const [rolled, setRolled] = useState(false);
 
   const factionIndex = FACTIONS.findIndex(f => f.name.toLowerCase() === faction);
-  console.log(factionIndex);
 
   function generate () {
     const randomFaction = FACTIONS[Math.floor(Math.random() * FACTIONS.length)];
@@ -19,35 +22,67 @@ function App() {
     const randomClass = randomRace.classes[Math.floor(Math.random() * randomRace.classes.length)];
     const randomSpec = CLASSES.find(c => c.name === randomClass)!.specs[Math.floor(Math.random() * CLASSES.find(c => c.name === randomClass)!.specs.length)];
 
-    setToon(`${randomRace.name} ${randomSpec} ${randomClass}`);
+    console.log(randomRace);
+
+    setRace(randomRace.name);
+    setToonClass(randomClass);
+    setSpec(randomSpec);
+    setRolled(true);
   }
+
+  function getImageUrl(name: string) {
+    return new URL(`./assets/builds/${name}.png`, import.meta.url).href
+  }
+
+  useEffect(() => {
+    if (spec && race && toonClass) {
+      const toon = `${race} ${spec} ${toonClass}`
+      const formatted = `${toon?.toLowerCase().replace(/ /g, "-")}`;
+      console.log(formatted);
+      const url = getImageUrl(formatted);
+      setToonCoverUrl(url);
+    }
+  }, [spec, race, toonClass])
 
   return (
     <div className="App">
-      <div>
-        <img src={hcLogo} alt="" width={150} style={{ marginRight: '-15px', marginBottom: '60px'}}/>
-        <div className="factions">
-          <label htmlFor="factionAny" className={`label ${faction === 'any' ? 'label--checked' : ''}`}>
-            <input type="radio" id="factionAny" value="any" onChange={() => setFaction('any')} checked={faction === 'any'} />
-            Any faction
-          </label>
-          <label htmlFor="factionAlliance" className={`label ${faction === 'alliance' ? 'label--checked' : ''}`}>
-            <img src={alliance} alt="" width={20} />
-            <input type="radio" id="factionAlliance" value="alliance" onChange={() => setFaction('alliance')} checked={faction == 'alliance' }/>
-            Alliance
-          </label>
-          <label htmlFor="factionHorde" className={`label ${faction === 'horde' ? 'label--checked' : ''}`}>
-            <img src={horde} alt="" width={20} />
-            <input type="radio" id="factionHorde" value="horde" onChange={() => setFaction('horde')} checked={faction === 'horde'} />
-            Horde
-          </label>
-        </div>
-        <button onClick={generate} className={faction}>Start your adventure</button>
-        {toon &&  
-          <div className="toon">
-            <h2>{toon}</h2>
+      <img src={logo} alt="Go Agane" className="logo" onClick={() => setRolled(false)}/>
+      <div className={`wrapper ${rolled ? 'wrapper--up' : ''}`}>
+        <h1>Find your Hardcore class</h1>
+        <div>
+          <div className="factions">
+            <label htmlFor="factionAny" className={`label ${faction === 'any' ? 'label--checked' : ''}`}>
+              <input type="radio" id="factionAny" value="any" onChange={() => setFaction('any')} checked={faction === 'any'} />
+              Any faction
+            </label>
+            <label htmlFor="factionAlliance" className={`label ${faction === 'alliance' ? `label--checked ${faction}` : ''}`}>
+              <img src={alliance} alt="" width={20} />
+              <input type="radio" id="factionAlliance" value="alliance" onChange={() => setFaction('alliance')} checked={faction == 'alliance' }/>
+              Alliance
+            </label>
+            <label htmlFor="factionHorde" className={`label ${faction === 'horde' ? `label--checked ${faction}` : ''}`}>
+              <img src={horde} alt="" width={20} />
+              <input type="radio" id="factionHorde" value="horde" onChange={() => setFaction('horde')} checked={faction === 'horde'} />
+              Horde
+            </label>
           </div>
-        }
+          {!rolled && (
+            <button onClick={generate} className={`roll ${faction}`}>{!rolled ? 'Start your adventure' : 'Go agane'}</button>
+          )}
+          {rolled &&  
+            <div>
+              <div className="toon" style={{ backgroundImage: `url(${toonCoverUrl})`}}>
+                <div className="toonWrapper">
+                  <h2 className="toonTitle">{race} {spec} {toonClass}</h2>
+                  <span className="toonGuideLink">Hardcore {spec} {toonClass} Guide</span>
+                </div>
+              </div>
+              <footer style={{ marginTop: '50px' }}>
+                <button onClick={generate} className="roll secondary">Go agane</button>
+              </footer>
+            </div>
+          }
+        </div>
       </div>
     </div>
   )

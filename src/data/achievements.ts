@@ -60,6 +60,8 @@ const startingAchievements = [
       "priest",
       "hunter",
       "mage",
+      "shaman",
+      "paladin",
     ]
   }
 ]
