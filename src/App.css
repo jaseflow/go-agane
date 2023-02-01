@@ -18,16 +18,11 @@
 .wrapper {
   transition: transform 375ms ease;
   transform: translateY(200px);
+  padding-bottom: 40px;
 }
 
 .wrapper--up {
   transform: translateY(0);
-}
-
-.logo {
-  position: fixed;
-  top: 40px;
-  left: 40px;
 }
 
 .label {
@@ -129,6 +124,12 @@
 
   .roll:active {
     transform: translateY(0);
+  }
+
+  .logo {
+    position: fixed;
+    top: 40px;
+    left: 40px;
   }
 
 }
