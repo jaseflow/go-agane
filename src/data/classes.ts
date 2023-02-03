@@ -20,7 +20,7 @@ const CLASSES = [
     specs: [
       { name: 'Beast Mastery', survivability: 'A', damage: 'B', utility: 'A' },
       { name: 'Marksmanship', survivability: 'B', damage: 'A', utility: 'B' },
-      { name: 'Survival', survivability: 'B', damage: 'A', utility: 'B' },
+      { name: 'Survival', survivability: 'A', damage: 'A', utility: 'B' },
     ],
   },
   {
