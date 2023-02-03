@@ -91,6 +91,10 @@ function App() {
       <header className="appHeader">
         <img src={logo} alt="Go Agane" className="logo" onClick={() => setRolled(false)}/>
       </header>
+      <header className="buildsHeader">
+        <h1>Find your Hardcore class</h1>
+        <p className="disclaimer"><strong>Note:</strong> Tier ratings are intended for beginner to average players, subject to exceptions based on individual playstyles.</p>
+      </header>
       <div className={`wrapper ${rolled ? 'wrapper--up' : ''}`} hidden>
         <h1>Find your Hardcore class</h1>
         <div>
@@ -128,7 +132,6 @@ function App() {
           }
         </div>
       </div>
-      <p className="disclaimer"><strong>Note:</strong> Tier ratings are intended for beginner to average players, subject to exceptions based on individual playstyles.</p>
       <div className="builds">
         {buildsList}
       </div>

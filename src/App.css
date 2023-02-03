@@ -18,9 +18,11 @@
   align-items: center;
 }
 
-.disclaimer {
+.buildsHeader {
   text-align: center;
 }
+
+.buildsHeader h1 { margin-bottom: 0 }
 
 .wrapper {
   transition: transform 375ms ease;
@@ -114,10 +116,7 @@
 }
 
 .builds {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 40px;
-  padding: 0 40px;
+  padding: 0 20px;
   margin: 0 auto;
   max-width: 1600px;
   margin-bottom: 100px;
@@ -125,12 +124,6 @@
 
 .buildTitle {
   font-weight: 900;
-}
-
-.specs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 5px;
 }
 
 .specCard {
@@ -233,7 +226,41 @@
   margin-bottom: 15px;
 }
 
+@media(max-width: 767px) {
+  .specs {
+    white-space: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-right: -20px;
+    margin-left: -20px;;
+  }
+
+  .spec {
+    display: inline-block;
+    width: 200px;
+    margin-left: 10px;
+  }
+
+  .spec:first-child {
+    margin-left: 20px;
+  }
+
+  .spec:last-child {
+    margin-right: 20px;
+  }
+
+  .specLink { display: none }
+  
+}
+
 @media(min-width: 768px) {
+
+  .builds {
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 40px;
+  }
 
   .factions {
     display: grid;
@@ -242,6 +269,11 @@
     gap: 10px;
   }
 
+  .specs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+  }
 
   .roll:hover {
     transform: translateY(-2px);
@@ -261,5 +293,16 @@
     transform: translateY(0);
   }
 
+}
 
+@media(min-width: 1024px) {
+  .builds {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media(min-width: 1600px) {
+  .builds {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
