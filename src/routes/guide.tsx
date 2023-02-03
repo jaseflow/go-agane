@@ -9,7 +9,7 @@ export default function Guide() {
   return (
     <div className="container container--small">
       <div className="text-centered">
-        <h1 style={{ marginBottom: '80px'}}><span style={{ textTransform: 'capitalize'}}>{styledBuild}</span></h1>
+        <h1 style={{ marginBottom: '85px'}}><span style={{ textTransform: 'capitalize'}}>{styledBuild}</span></h1>
         <h2>Coming soon</h2>
         <p>If you are interested in writing the <span style={{ textTransform: 'capitalize'}}>{styledBuild}</span> guide with your name as the author, then message <strong>Oddflow#5608</strong> in the HC Discord.</p>
       </div>
