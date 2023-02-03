@@ -52,7 +52,7 @@ function App() {
 
     const className = c.name.toLowerCase();
 
-    const classImageUrl = new URL(`./assets/${className}.jpg`, import.meta.url).href
+    const classImageUrl = new URL(`./assets/${className}.jpg`, import.meta.url).href;
 
     const specList = c.specs.map((s) => {
       const specName = `${s.name.toLowerCase().replace(/ /g, "-")}-${c.name.toLowerCase()}`

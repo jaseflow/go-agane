@@ -32,7 +32,7 @@ body {
 }
 
 h1 {
-  font-size: 2.5em;
+  font-size: 28px;
   line-height: 1.1;
   font-weight: 900;
 }
@@ -54,4 +54,11 @@ button {
 
 button.secondary {
   background: #222;
+}
+
+@media (min-width: 768px) {
+
+  h1 {
+    font-size: 40px;
+  }
 }
