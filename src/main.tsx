@@ -7,6 +7,7 @@ import {
 import Root from './routes/root';
 import Builds from './routes/builds';
 import Roll from './routes/roll';
+import Guide from './routes/guide';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "roll",
         element: <Roll />,
+      },
+      {
+        path: ":build",
+        element: <Guide />,
       },
     ],
   },

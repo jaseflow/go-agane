@@ -7,6 +7,30 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.text-centered {
+  text-align: center;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container--small {
+  max-width: 500px;
+}
+
 .logo {
   width: 150px;
 }
@@ -41,6 +65,8 @@
   margin: 0 auto;
   max-width: 500px;
   text-align: center;
+  animation: fadeInUp 375ms 100ms ease forwards;
+  opacity: 0;
 }
 
 .label {
@@ -132,6 +158,10 @@
 
 .buildTitle {
   font-weight: 900;
+}
+
+.spec {
+  color: #fff;
 }
 
 .specCard {

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import '../App.css';
 
 import { CLASSES } from '../data';
 
@@ -22,22 +21,23 @@ export default function Builds() {
 
     const specList = c.specs.map((s: any) => {
       const specName = `${s.name.toLowerCase().replace(/ /g, "-")}-${c.name.toLowerCase()}`
-      console.log(specName);
       const url = getImageUrl(specName);
 
       return (
-        <div className="spec">
-          <div className="specCard" key={`spec-${specName}`}>
-            <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
-            <div className="specWrapper">
-              <h4 className="specTitle">{s.name}</h4>
-              <p>Survability <strong className={s.survivability}>{s.survivability}</strong></p>
-              <p>Damage <strong className={s.damage}>{s.damage}</strong></p>
-              <p>Utility <strong className={s.utility}>{s.utility}</strong></p>
+        <Link to={`/${specName}`}>
+          <div className="spec">
+            <div className="specCard" key={`spec-${specName}`}>
+              <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
+              <div className="specWrapper">
+                <h4 className="specTitle">{s.name}</h4>
+                <p>Survability <strong className={s.survivability}>{s.survivability}</strong></p>
+                <p>Damage <strong className={s.damage}>{s.damage}</strong></p>
+                <p>Utility <strong className={s.utility}>{s.utility}</strong></p>
+              </div>
             </div>
+            <span className="specLink link">Read guide</span>
           </div>
-          <span className="specLink link">Read guide</span>
-        </div>
+        </Link>
       )
     })
 
