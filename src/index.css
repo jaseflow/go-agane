@@ -56,6 +56,11 @@ button.secondary {
   background: #222;
 }
 
+button.small {
+  padding: 0.25rem 1rem;
+  font-size: 16px;
+}
+
 @media (min-width: 768px) {
 
   h1 {
