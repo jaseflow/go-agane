@@ -11,6 +11,17 @@
   width: 150px;
 }
 
+.appHeader {
+  padding: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.disclaimer {
+  text-align: center;
+}
+
 .wrapper {
   transition: transform 375ms ease;
   transform: translateY(200px);
@@ -90,12 +101,14 @@
   margin-bottom: 5px;
 }
 
-.toonGuideLink {
+.toonGuideLink,
+.specLink {
   color: #f7481f;
   font-weight: 500;
   cursor: pointer;
 }
 
+.specLink:hover,
 .toonGuideLink:hover {
   text-decoration: underline;
 }
@@ -103,8 +116,7 @@
 .builds {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-column-gap: 40px;
-  grid-row-gap: 80px;
+  grid-gap: 40px;
   padding: 0 40px;
   margin: 0 auto;
   max-width: 1600px;
@@ -121,17 +133,23 @@
   grid-gap: 5px;
 }
 
-.spec {
+.specCard {
   height: 350px;
   border-radius: 8px;
   background-color: #222;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
-.specBg:hover {
-  opacity: 1;
-  cursor: pointer;
+.specLink {
+  text-align: center;
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  margin: 0;
+  margin-top: 20px;
+  transition: all 375ms ease;
 }
 
 .buildHeader {
@@ -169,7 +187,19 @@
   height: 100%;
   z-index: 5;
   opacity: 0.75;
-  transition: opacity 375ms ease;
+  transition: all 375ms ease;
+  transform-origin: center;
+}
+
+
+.spec:hover .specBg {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.spec:hover .specLink {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .specWrapper p {
@@ -178,8 +208,24 @@
   justify-content: space-between;
   width: 100%;
   font-size: 14px;
-  line-height: 1.25;
+  line-height: 1.5;
   padding: 0 20px;
+}
+
+.specWrapper strong.A {
+  color: green;
+}
+
+.specWrapper strong.B {
+  color: yellow;
+}
+
+.specWrapper strong.C {
+  color: orange;
+}
+
+.specWrapper strong.S {
+  color: #ac00ac;
 }
 
 .specTitle {
@@ -187,12 +233,7 @@
   margin-bottom: 15px;
 }
 
-
 @media(min-width: 768px) {
-
-  #root {
-    margin-top: 10vh;
-  }
 
   .factions {
     display: grid;
@@ -208,12 +249,6 @@
 
   .roll:active {
     transform: translateY(0);
-  }
-
-  .logo {
-    position: fixed;
-    top: 40px;
-    left: 40px;
   }
 
   .wrapper {

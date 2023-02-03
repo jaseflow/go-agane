@@ -59,14 +59,17 @@ function App() {
       const url = getImageUrl(specName);
 
       return (
-        <div className="spec" key={`spec-${specName}`}>
-          <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
-          <div className="specWrapper">
-            <h4 className="specTitle">{s.name}</h4>
-            <p>Survability <strong>{s.survivability}</strong></p>
-            <p>Damage <strong>{s.damage}</strong></p>
-            <p>Utility <strong>{s.utility}</strong></p>
+        <div className="spec">
+          <div className="specCard" key={`spec-${specName}`}>
+            <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
+            <div className="specWrapper">
+              <h4 className="specTitle">{s.name}</h4>
+              <p>Survability <strong className={s.survivability}>{s.survivability}</strong></p>
+              <p>Damage <strong className={s.damage}>{s.damage}</strong></p>
+              <p>Utility <strong className={s.utility}>{s.utility}</strong></p>
+            </div>
           </div>
+          <span className="specLink">Read guide</span>
         </div>
       )
     })
@@ -85,7 +88,7 @@ function App() {
 
   return (
     <div>
-      <header>
+      <header className="appHeader">
         <img src={logo} alt="Go Agane" className="logo" onClick={() => setRolled(false)}/>
       </header>
       <div className={`wrapper ${rolled ? 'wrapper--up' : ''}`} hidden>
@@ -125,6 +128,7 @@ function App() {
           }
         </div>
       </div>
+      <p className="disclaimer"><strong>Note:</strong> Tier ratings are intended for beginner to average players, subject to exceptions based on individual playstyles.</p>
       <div className="builds">
         {buildsList}
       </div>
