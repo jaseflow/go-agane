@@ -13,7 +13,6 @@ function App() {
   const [toonClass, setToonClass] = useState<string>()
   const [toonCoverUrl, setToonCoverUrl] = useState<string>();
   const [rolled, setRolled] = useState(false);
-  const [builds, setBuilds] = useState<string[]>([]);
 
   const factionIndex = FACTIONS.findIndex(f => f.name.toLowerCase() === faction);
 
@@ -25,7 +24,7 @@ function App() {
 
     setRace(randomRace.name);
     setToonClass(randomClass);
-    setSpec(randomSpec);
+    setSpec(randomSpec.name);
     setRolled(true);
   }
 
@@ -42,24 +41,31 @@ function App() {
     }
   }, [spec, race, toonClass])
 
-  const buildsList = CLASSES.map((c, i) => {
+
+  const sortedClasses = CLASSES.sort((a: any, b: any) => {
+    if (a.name < b.name) return -1;
+    if (a.name > b.name) return 1;
+    return 0;
+  })
+
+  const buildsList = sortedClasses.map((c, i) => {
 
     const className = c.name.toLowerCase();
 
-    console.log(className);
     const classImageUrl = new URL(`./assets/${className}.jpg`, import.meta.url).href
 
     const specList = c.specs.map((s) => {
-      const specName = `${s.toLowerCase().replace(/ /g, "-")}-${c.name.toLowerCase()}`
+      const specName = `${s.name.toLowerCase().replace(/ /g, "-")}-${c.name.toLowerCase()}`
       const url = getImageUrl(specName);
 
       return (
-        <div className="spec" key={`spec-${specName}`} style={{ backgroundImage: `url(${url})`}}>
+        <div className="spec" key={`spec-${specName}`}>
+          <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
           <div className="specWrapper">
-            <h4 className="specTitle">{s}</h4>
-            <p>Survability <strong>A</strong></p>
-            <p>Damage <strong>B</strong></p>
-            <p>Utility <strong>S</strong></p>
+            <h4 className="specTitle">{s.name}</h4>
+            <p>Survability <strong>{s.survivability}</strong></p>
+            <p>Damage <strong>{s.damage}</strong></p>
+            <p>Utility <strong>{s.utility}</strong></p>
           </div>
         </div>
       )
