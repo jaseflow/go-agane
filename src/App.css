@@ -20,9 +20,16 @@
 
 .buildsHeader {
   text-align: center;
+  margin-bottom: 40px;
+  font-size: 14px;
+  padding: 0 20px;
 }
 
-.buildsHeader h1 { margin-bottom: 0 }
+.buildsHeader h1 { margin-bottom: 10px }
+
+.disclaimer {
+  margin: 0;
+}
 
 .wrapper {
   transition: transform 375ms ease;
@@ -103,8 +110,7 @@
   margin-bottom: 5px;
 }
 
-.toonGuideLink,
-.specLink {
+.link {
   color: #f7481f;
   font-weight: 500;
   cursor: pointer;

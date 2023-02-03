@@ -93,7 +93,7 @@ function App() {
       </header>
       <header className="buildsHeader">
         <h1>Find your Hardcore class</h1>
-        <p className="disclaimer"><strong>Note:</strong> Tier ratings are intended for beginner to average players, subject to exceptions based on individual playstyles.</p>
+        <p className="disclaimer"><strong>Note:</strong> Tier ratings are intended for beginner to average players, if you strong disagree please <a href="https://forms.gle/3mVEXW1CaAmZGWze9" target="_blank" className="link">submit your own ratings</a>.</p>
       </header>
       <div className={`wrapper ${rolled ? 'wrapper--up' : ''}`} hidden>
         <h1>Find your Hardcore class</h1>
