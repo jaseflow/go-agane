@@ -13,6 +13,7 @@ function App() {
   const [toonClass, setToonClass] = useState<string>()
   const [toonCoverUrl, setToonCoverUrl] = useState<string>();
   const [rolled, setRolled] = useState(false);
+  const [builds, setBuilds] = useState<string[]>([]);
 
   const factionIndex = FACTIONS.findIndex(f => f.name.toLowerCase() === faction);
 
@@ -21,8 +22,6 @@ function App() {
     const randomRace = factionIndex >= 0 ? FACTIONS[factionIndex].races[Math.floor(Math.random() * randomFaction.races.length)] : randomFaction.races[Math.floor(Math.random() * randomFaction.races.length)];
     const randomClass = randomRace.classes[Math.floor(Math.random() * randomRace.classes.length)];
     const randomSpec = CLASSES.find(c => c.name === randomClass)!.specs[Math.floor(Math.random() * CLASSES.find(c => c.name === randomClass)!.specs.length)];
-
-    console.log(randomRace);
 
     setRace(randomRace.name);
     setToonClass(randomClass);
@@ -38,16 +37,39 @@ function App() {
     if (spec && race && toonClass) {
       const toon = `${race} ${spec} ${toonClass}`
       const formatted = `${toon?.toLowerCase().replace(/ /g, "-")}`;
-      console.log(formatted);
       const url = getImageUrl(formatted);
       setToonCoverUrl(url);
     }
   }, [spec, race, toonClass])
 
+  const buildsList = CLASSES.map((c, i) => {
+
+    const specList = c.specs.map((s) => {
+      const specName = `${s.toLowerCase().replace(/ /g, "-")}-${c.name.toLowerCase()}`
+      const url = getImageUrl(specName);
+
+      return (
+        <div className="spec" key={`spec-${specName}`} style={{ backgroundImage: `url(${url})`}}>
+          <h4 className="specTitle">{s}</h4>
+        </div>
+      )
+    })
+
+    return (
+      <div key={`build-${i}`}>
+        <h2 className="buildTitle">{c.name}</h2>
+        <div className="specs">{specList}</div>
+      </div>
+    )
+
+  })
+
   return (
-    <div className="App">
-      <img src={logo} alt="Go Agane" className="logo" onClick={() => setRolled(false)}/>
-      <div className={`wrapper ${rolled ? 'wrapper--up' : ''}`}>
+    <div>
+      <header>
+        <img src={logo} alt="Go Agane" className="logo" onClick={() => setRolled(false)}/>
+      </header>
+      <div className={`wrapper ${rolled ? 'wrapper--up' : ''}`} hidden>
         <h1>Find your Hardcore class</h1>
         <div>
           <div className="factions">
@@ -83,6 +105,9 @@ function App() {
             </div>
           }
         </div>
+      </div>
+      <div className="builds">
+        {buildsList}
       </div>
     </div>
   )
