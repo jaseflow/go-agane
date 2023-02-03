@@ -116,8 +116,8 @@
   cursor: pointer;
 }
 
-.specLink:hover,
-.toonGuideLink:hover {
+.link:hover {
+  color: #f7481f;
   text-decoration: underline;
 }
 

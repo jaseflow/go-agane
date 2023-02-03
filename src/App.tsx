@@ -69,7 +69,7 @@ function App() {
               <p>Utility <strong className={s.utility}>{s.utility}</strong></p>
             </div>
           </div>
-          <span className="specLink">Read guide</span>
+          <span className="specLink link">Read guide</span>
         </div>
       )
     })
