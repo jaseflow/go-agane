@@ -44,20 +44,33 @@ function App() {
 
   const buildsList = CLASSES.map((c, i) => {
 
+    const className = c.name.toLowerCase();
+
+    console.log(className);
+    const classImageUrl = new URL(`./assets/${className}.jpg`, import.meta.url).href
+
     const specList = c.specs.map((s) => {
       const specName = `${s.toLowerCase().replace(/ /g, "-")}-${c.name.toLowerCase()}`
       const url = getImageUrl(specName);
 
       return (
         <div className="spec" key={`spec-${specName}`} style={{ backgroundImage: `url(${url})`}}>
-          <h4 className="specTitle">{s}</h4>
+          <div className="specWrapper">
+            <h4 className="specTitle">{s}</h4>
+            <p>Survability <strong>A</strong></p>
+            <p>Damage <strong>B</strong></p>
+            <p>Utility <strong>S</strong></p>
+          </div>
         </div>
       )
     })
 
     return (
       <div key={`build-${i}`}>
-        <h2 className="buildTitle">{c.name}</h2>
+        <header className="buildHeader">
+          <img src={classImageUrl} alt="" />
+          <h2 className="buildTitle">{c.name}</h2>
+        </header>
         <div className="specs">{specList}</div>
       </div>
     )
