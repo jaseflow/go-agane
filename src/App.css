@@ -233,6 +233,11 @@
 }
 
 @media(max-width: 767px) {
+
+  .specs {
+    margin-bottom: 20px;
+  }
+
   .specs {
     white-space: nowrap;
     overflow-x: auto;
