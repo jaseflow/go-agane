@@ -18,13 +18,33 @@
   }
 }
 
+img {
+  max-width: 100%;
+}
+
+.unstyled {
+  margin-left: 0;
+  list-style: none;
+  padding-left: 0;
+}
+
 .text-centered {
   text-align: center;
+}
+
+.flat {
+  margin: 0 !important;
+}
+
+.pressed {
+  margin: 0;
+  margin-bottom: 10px;
 }
 
 .container {
   margin: 0 auto;
   padding: 0 20px;
+  max-width: 1200px;
 }
 
 .container--small {
@@ -36,16 +56,25 @@
 }
 
 .appHeader {
-  padding: 40px;
+  padding: 80px 40px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 }
 
-.headerRoll {
+.appFooter {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 100px;
+}
+
+.appRoll {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .buildsHeader {
@@ -105,6 +134,10 @@
   border-color: #b30000;
 }
 
+.rollWrapper {
+  padding-bottom: 100px;
+}
+
 .factions {
   display: flex;
   flex-direction: column;
@@ -134,6 +167,7 @@
 }
 
 .toonTitle {
+  text-align: center;
   margin: 0;
   margin-bottom: 5px;
 }
@@ -187,6 +221,7 @@
   display: flex;
   align-items: center;
   gap: 15px;
+  margin-bottom: 10px;
 }
 
 .buildHeader img {
@@ -232,30 +267,44 @@
   transform: translateY(0);
 }
 
-.specWrapper p {
+.stats p {
   margin: 0;
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  gap: 20px;
   font-size: 14px;
   line-height: 1.5;
-  padding: 0 20px;
 }
 
-.specWrapper strong.A {
+.stats strong.A {
   color: green;
 }
 
-.specWrapper strong.B {
+.stats strong.B {
   color: yellow;
 }
 
-.specWrapper strong.C {
+.stats strong.C {
   color: orange;
 }
 
-.specWrapper strong.S {
+.stats strong.S {
   color: #ac00ac;
+}
+
+.stats--inline {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.stats--large p {
+  font-size: 18px;
+}
+
+.stats--inline p {
+  gap: 10px;
+  justify-content: flex-start;
 }
 
 .specTitle {
@@ -263,10 +312,83 @@
   margin-bottom: 15px;
 }
 
+.toc {
+  list-style: none;
+  padding: 0;
+}
+
+.toc a {
+  color: #f7481f;
+  display: block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-left: -10px;
+  transition: background 375ms ease;
+  margin-bottom: 1px;
+  font-size: 14px;
+}
+
+.toc .active a {
+  background: rgba(255,255,255,0.05);
+}
+
+.toc a:hover {
+  background: rgba(255,255,255,0.05);
+  color: #f7481f;
+  text-decoration: none;
+}
+
+.guideContent section {
+  padding-bottom: 40px;
+}
+
+.guideHeader {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+}
+
+.guideCover {
+  border-radius: 40px;
+  margin-bottom: 20px;
+}
+
+.guideIntro {
+  font-size: 110%;
+  line-height: 1.5;
+}
+
+.guideAvatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 5px;
+}
+
+.guideRatings {
+  margin-bottom: 40px;
+}
+
+.guideAuthor {
+  font-size: 14px;
+}
+
+.guideAuthorFooter {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+  line-height: 1.2;
+}
+
+.wowhead-embed {
+  margin: 0 !important;
+  max-width: none !important;
+}
+
 @media(max-width: 767px) {
 
   .specs {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 
   .specs {
@@ -277,17 +399,17 @@
     margin-left: -20px;;
   }
 
-  .spec {
+  .specs a {
     display: inline-block;
     width: 200px;
     margin-left: 10px;
   }
 
-  .spec:first-child {
+  .specs a:first-child {
     margin-left: 20px;
   }
 
-  .spec:last-child {
+  .specs a:last-child {
     margin-right: 20px;
   }
 
@@ -296,6 +418,12 @@
 }
 
 @media(min-width: 768px) {
+
+  .guideGrid {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-column-gap: 80px;
+  }
 
   .builds {
     padding: 0 40px;

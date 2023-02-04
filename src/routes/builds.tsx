@@ -30,9 +30,11 @@ export default function Builds() {
               <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
               <div className="specWrapper">
                 <h4 className="specTitle">{s.name}</h4>
-                <p>Survability <strong className={s.survivability}>{s.survivability}</strong></p>
-                <p>Damage <strong className={s.damage}>{s.damage}</strong></p>
-                <p>Utility <strong className={s.utility}>{s.utility}</strong></p>
+                <div className="stats">
+                  <p>Survability <strong className={s.survivability}>{s.survivability}</strong></p>
+                  <p>Damage <strong className={s.damage}>{s.damage}</strong></p>
+                  <p>Utility <strong className={s.utility}>{s.utility}</strong></p>
+                </div>
               </div>
             </div>
             <span className="specLink link">Read guide</span>
@@ -45,7 +47,7 @@ export default function Builds() {
       <div key={`build-${i}`}>
         <header className="buildHeader">
           <img src={classImageUrl} alt="" />
-          <h2 className="buildTitle">{c.name}</h2>
+          <h2 className="buildTitle flat">{c.name}</h2>
         </header>
         <div className="specs">{specList}</div>
       </div>
@@ -57,12 +59,15 @@ export default function Builds() {
   return (
     <div>
       <header className="buildsHeader">
-        <h1>Find your Hardcore class</h1>
+        <h1>Choose a build</h1>
         <p className="disclaimer"><strong>Note:</strong> Tier ratings are intended for beginner to average players, if you think otherwise please <a href="https://forms.gle/3mVEXW1CaAmZGWze9" target="_blank" className="link">submit your own ratings</a>.</p>
       </header>
       <div className="builds">
         {buildsList}
       </div>
+      <footer className="appFooter">
+        <h3 className="appRoll">Not sure what to play?</h3> <Link to="/roll"><button className="small">Roll for it</button></Link>
+      </footer>
     </div>
   )
 

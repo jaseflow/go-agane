@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import alliance from '../assets/alliance.png';
 import horde from '../assets/horde.png';
@@ -26,6 +27,9 @@ export default function Roll() {
     setToonClass(randomClass);
     setSpec(randomSpec.name);
     setRolled(true);
+    setTimeout(() => {
+      window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: 'smooth' });
+    }, 0)
   }
 
   function getImageUrl(name: string) {
@@ -43,41 +47,43 @@ export default function Roll() {
 
 
   return (
-    <div className="wrapper">
-      <h1>Find your Hardcore class</h1>
-      <div>
-        <div className="factions">
-          <label htmlFor="factionAny" className={`label ${faction === 'any' ? 'label--checked' : ''}`}>
-            <input type="radio" id="factionAny" value="any" onChange={() => setFaction('any')} checked={faction === 'any'} />
-            Any faction
-          </label>
-          <label htmlFor="factionAlliance" className={`label ${faction === 'alliance' ? `label--checked ${faction}` : ''}`}>
-            <img src={alliance} alt="" width={20} />
-            <input type="radio" id="factionAlliance" value="alliance" onChange={() => setFaction('alliance')} checked={faction == 'alliance' }/>
-            Alliance
-          </label>
-          <label htmlFor="factionHorde" className={`label ${faction === 'horde' ? `label--checked ${faction}` : ''}`}>
-            <img src={horde} alt="" width={20} />
-            <input type="radio" id="factionHorde" value="horde" onChange={() => setFaction('horde')} checked={faction === 'horde'} />
-            Horde
-          </label>
-        </div>
-        {!rolled && (
-          <button onClick={generate} className={`roll ${faction}`}>{!rolled ? 'Start your adventure' : 'Go agane'}</button>
-        )}
-        {rolled &&  
-          <div>
-            <div className="toon" style={{ backgroundImage: `url(${toonCoverUrl})`}}>
-              <div className="toonWrapper">
-                <h2 className="toonTitle">{race} {spec} {toonClass}</h2>
-                <span className="link">Hardcore {spec} {toonClass} Guide</span>
-              </div>
-            </div>
-            <footer style={{ marginTop: '50px' }}>
-              <button onClick={generate} className="roll secondary">Go agane</button>
-            </footer>
+    <div className="container container--small">
+      <div className="rollWrapper">
+        <h1 className="text-centered">Choose a faction</h1>
+        <div>
+          <div className="factions">
+            <label htmlFor="factionAny" className={`label ${faction === 'any' ? 'label--checked' : ''}`}>
+              <input type="radio" id="factionAny" value="any" onChange={() => setFaction('any')} checked={faction === 'any'} />
+              Any faction
+            </label>
+            <label htmlFor="factionAlliance" className={`label ${faction === 'alliance' ? `label--checked ${faction}` : ''}`}>
+              <img src={alliance} alt="" width={20} />
+              <input type="radio" id="factionAlliance" value="alliance" onChange={() => setFaction('alliance')} checked={faction == 'alliance' }/>
+              Alliance
+            </label>
+            <label htmlFor="factionHorde" className={`label ${faction === 'horde' ? `label--checked ${faction}` : ''}`}>
+              <img src={horde} alt="" width={20} />
+              <input type="radio" id="factionHorde" value="horde" onChange={() => setFaction('horde')} checked={faction === 'horde'} />
+              Horde
+            </label>
           </div>
-        }
+          {!rolled && (
+            <button onClick={generate} className={`roll ${faction}`}>{!rolled ? 'Roll for a build' : 'Go agane'}</button>
+          )}
+          {rolled &&  
+            <div>
+              <div className="toon" style={{ backgroundImage: `url(${toonCoverUrl})`}}>
+                <div className="toonWrapper">
+                  <h3 className="toonTitle">{race} {spec} {toonClass}</h3>
+                  <Link className="link" to={`/${spec}-${toonClass}`}>See Hardcore Guide</Link>
+                </div>
+              </div>
+              <footer style={{ marginTop: '50px' }}>
+                <button onClick={generate} className="roll secondary">Go agane</button>
+              </footer>
+            </div>
+          }
+        </div>
       </div>
     </div>
   )

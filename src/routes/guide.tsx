@@ -11,7 +11,7 @@ export default function Guide() {
       <div className="text-centered">
         <h1 style={{ marginBottom: '85px'}}><span style={{ textTransform: 'capitalize'}}>{styledBuild}</span></h1>
         <h2>Coming soon</h2>
-        <p>If you are interested in writing the <span style={{ textTransform: 'capitalize'}}>{styledBuild}</span> guide with your name as the author, then message <strong>Oddflow#5608</strong> in the HC Discord.</p>
+        <p>Interested in writing the <span style={{ textTransform: 'capitalize'}}>{styledBuild}</span>guide? Message <strong>Oddflow#5608</strong> in the official HC Discord.</p>
       </div>
     </div>
   )
