@@ -29,6 +29,7 @@ export default function Builds() {
             <div className="specCard" key={`spec-${specName}`}>
               <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
               <div className="specWrapper">
+                {specName === 'feral-druid' && <div className="specBadge">New</div>}
                 <h4 className="specTitle">{s.name}</h4>
                 <div className="stats">
                   <p>Survability <strong className={s.survivability}>{s.survivability}</strong></p>

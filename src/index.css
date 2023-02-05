@@ -4,7 +4,7 @@
 
 html {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.5;
   font-weight: 400;
 
@@ -68,6 +68,10 @@ table {
   margin-bottom: 20px;
 }
 
+table {
+  border-collapse: collapse;
+}
+
 button {
   display: block;
   width: 100%;
@@ -90,6 +94,30 @@ button.secondary {
 button.small {
   padding: 0.25rem 1rem;
   font-size: 16px;
+}
+
+table {
+  border-collapse: collapse;
+  text-align: left;
+  width: 100%;
+}
+
+th,
+td {
+  padding: 10px 20px;
+}
+
+th {
+  background-color: #222;
+}
+
+th:first-child { width: 200px }
+
+th:first-child { border-radius: 5px 0 0 0 }
+th:last-child { border-radius: 0 5px 0 0 }
+
+td {
+  border-top: 1px solid #333;
 }
 
 @media (min-width: 768px) {

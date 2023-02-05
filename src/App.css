@@ -198,6 +198,19 @@ img {
   color: #fff;
 }
 
+.specBadge {
+  font-size: 13px;
+  background: #a335ee;
+  color: #fff;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  box-shadow: 0 1px 1px rgba(0,0,0,1);
+}
+
 .specCard {
   height: 350px;
   border-radius: 8px;
@@ -289,7 +302,7 @@ img {
 }
 
 .stats strong.S {
-  color: #ac00ac;
+  color: #a335ee;
 }
 
 .stats--inline {
@@ -351,6 +364,15 @@ img {
 .guideCover {
   border-radius: 40px;
   margin-bottom: 20px;
+}
+
+.guideTalents {
+  margin-bottom: 40px;
+}
+
+.guideSidebar {
+  position: sticky;
+  top: 40px;
 }
 
 .guideIntro {
@@ -423,6 +445,16 @@ img {
     display: grid;
     grid-template-columns: 300px 1fr;
     grid-column-gap: 80px;
+  }
+
+  .guideSkills {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 40px;
+  }
+
+  .guideSkills p {
+    margin-bottom: 0;
   }
 
   .builds {

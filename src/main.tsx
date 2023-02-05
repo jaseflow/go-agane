@@ -8,6 +8,7 @@ import Root from './routes/root';
 import Builds from './routes/builds';
 import Roll from './routes/roll';
 import Guide from './routes/guide';
+import FeralDruid from './routes/feral-druid';
 import './index.css';
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
       {
         path: ":build",
         element: <Guide />,
+      },
+      {
+        path: "feral-druid",
+        element: <FeralDruid />,
       },
     ],
   },
