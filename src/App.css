@@ -56,7 +56,8 @@ img {
 }
 
 .appHeader {
-  padding: 80px 40px;
+  padding: 0 40px;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -352,13 +353,19 @@ img {
 }
 
 .guideContent section {
-  padding-bottom: 40px;
+  background: rgba(255,255,255,0.025);
+  padding: 40px;
+  margin-bottom: 40px;
+  border-radius: 20px;
+}
+
+.guideContent section h2 {
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.25);
 }
 
 .guideHeader {
-  padding-bottom: 20px;
-  margin-bottom: 20px;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
+  margin-bottom: 40px;
 }
 
 .guideCover {
@@ -368,11 +375,6 @@ img {
 
 .guideTalents {
   margin-bottom: 40px;
-}
-
-.guideSidebar {
-  position: sticky;
-  top: 40px;
 }
 
 .guideIntro {
@@ -405,6 +407,25 @@ img {
 .wowhead-embed {
   margin: 0 !important;
   max-width: none !important;
+}
+
+.factionItem {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.macro {
+  background: #202020;
+  border-radius: 4px;
+  color: #ddd;
+  font-family: "JetBrains Mono",Consolas,"Bitstream Vera Sans Mono",monospace;
+  line-height: normal;
+  margin: 20px 0;
+  overflow-wrap: break-word;
+  padding: 20px;
+  white-space: pre-wrap;
+  font-size: 15px;
 }
 
 @media(max-width: 767px) {
@@ -440,6 +461,22 @@ img {
 }
 
 @media(min-width: 768px) {
+
+  .guideAuthor {
+    position: fixed;
+    bottom: 40px;
+    width: 300px;
+  }
+
+  .guideSidebar {
+    position: sticky;
+    top: 40px;
+    height: calc(100vh - 290px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-bottom: 40px;
+  }
 
   .guideGrid {
     display: grid;

@@ -63,7 +63,8 @@ h4,
 p,
 ul,
 ol,
-table {
+table,
+pre {
   margin: 0;
   margin-bottom: 20px;
 }

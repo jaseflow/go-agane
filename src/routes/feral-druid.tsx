@@ -1,33 +1,52 @@
-import { useParams } from 'react-router-dom';
-
 import feralCover from '../assets/builds/feral-druid.png';
 
 import { CLASSES } from '../data';
+
+import alliance from '../assets/alliance.png';
+import horde from '../assets/horde.png';
+
+import Scrollspy from 'react-scrollspy'
 
 export default function FeralDruid() {
 
   const druid = CLASSES.find(c => c.name === 'Druid');
   const s = druid?.specs.find(s => s.name === 'Feral');
 
+  const navItems = [
+    'terms',
+    'skills',
+    'talents',
+    'professions',
+    'quests',
+    'danger',
+    'forms',
+    'stats',
+    'macros',
+  ]
+
   return (
     <div className="container">
       <div className="guideGrid">
         <div>
           <div className="guideSidebar">
-            <img src={feralCover} alt="" className="guideCover" />
-            <div className="guideRatings">
-              <h3 className="pressed">Feral Druid Hardcore</h3>
-              <ul className="toc">
-                <li className="active"><a href="#">Terms to know</a></li>
-                <li><a href="#">Important skills / talents</a></li>
-                <li><a href="#">Talent Builds</a></li>
-                <li><a href="#">Professions</a></li>
-                <li><a href="#">Class quests</a></li>
-                <li><a href="#">Dealing with danger</a></li>
-                <li><a href="#">Using your forms</a></li>
-                <li><a href="#">Stat analysis</a></li>
-                <li><a href="#">Important macros</a></li>
-              </ul>
+            <div>
+              <img src={feralCover} alt="" className="guideCover" />
+              <div className="guideRatings">
+                <h3 className="pressed">Feral Druid Hardcore</h3>
+                <ul className="toc">
+                <Scrollspy className="toc" items={navItems} currentClassName="active">
+                    <li><a href="#terms">Terms to know</a></li>
+                    <li><a href="#skills">Important skills / talents</a></li>
+                    <li><a href="#talents">Talent Builds</a></li>
+                    <li><a href="#professions">Professions</a></li>
+                    <li><a href="#quests">Class quests</a></li>
+                    <li><a href="#danger">Dealing with danger</a></li>
+                    <li><a href="#forms">Using your forms</a></li>
+                    <li><a href="#stats">Stat analysis</a></li>
+                    <li><a href="#macros">Important macros</a></li>
+                  </Scrollspy>
+                </ul>
+              </div>
             </div>
             <div className="guideAuthor">
               <h3 className="pressed">About the author</h3>
@@ -55,7 +74,7 @@ export default function FeralDruid() {
             <p className="guideIntro">Druid is a shapeshifter class that is fairly unique to World of Warcraft. Their versatility and ability to fill any role (tank, melee, caster, or healer) makes them the true jack of all trades. There are so many different ways to play a Druid that it can morph to a players desired role, that they feel most comfortable with. No matter what your playstyle for hardcore is, there is a build or style that will likely feel comfortable for you. Don't be overwhelmed by the sheer amount of skills and abilities! Druid is easy for beginners with a high skill cap, but there is lots of room in between.</p>
               <p className="guideIntro">This is our recommended talent and starter guide for someone new to the class or having trouble surviving in Hardcore.</p>
             </section>
-          <section>
+          <section id="terms">
             <h2>Terms to know</h2>
             <ul className="unstyled">
               <li>
@@ -73,7 +92,7 @@ export default function FeralDruid() {
               </li>
             </ul>
           </section>
-          <section>
+          <section id="skills">
             <h2>Important Skills, Talents, Debuffs</h2>
             <ul className="unstyled">
               <li>
@@ -126,44 +145,51 @@ export default function FeralDruid() {
               </li>
             </ul>
           </section>
-          <section>
+          <section id="talents">
             <h2>Talent Builds</h2>
-            <h4>10-24</h4>
+            <h4>Level 10-24</h4>
             <div className="guideTalents">
               <a href="https://www.wowhead.com/classic/talent-calc/embed/druid/510005301">See 10-24 Feral Druid Talents</a>
             </div>
             <p>Your first point recommendation is Nature's Grasp. This would be followed by Improved Wrath, Natural Weapons and Omen of Clarity. If you are still dying at low level, an alternative is to max out Improved Nature’s Grasp. Between Levels 25-30 you will be respecing if you took Improved Wrath so make sure to save 1 gold.</p>
-            <h4>25-60</h4>
+            <h4>Level 25-60</h4>
             <div className="guideTalents">
               <a href="https://www.wowhead.com/classic/talent-calc/embed/druid/014005301-5302511303002151-05">See 24-60 Feral Druid Talents</a>
             </div>
             <p>Once you respec you will want to likely run a build similar to this. There are variables here in talent points that will be explained. Once you have your 14 points into the balance tree, you will want to max out Furor (5/5) in the tier 1 resto tree. The benefit of this is any time you enter bear form you will always have enough rage to Bash (stun)  or to Feral Charge (later on), which is incredibly important for making space in hardcore. </p>
             <p>You will want to take 5/5 Ferocity, 2/2 Brutal Impact, 5/5 Thick Hide, Feral Charge, 3/3 Predatory Strikes, 2/2 Savage Fury, Feral Faerie Fire (Quality of Life more than necessary talent) 5/5 Heart of the Wild for your Level 54-58 push when gear gets harder to come by, this will be your powerspike for the final levels. In this build I have 3 points in Feral Aggression but you can place them anywhere you'd prefer - Primal Fury or Blood Frenzy are great choices as well. Feline swiftness is not a necessary talent for this build.</p>
           </section>
-          <section>
+          <section id="professions">
             <h2>Recommended Professions</h2>
-            <h4 className="flat">Alchemy/Herbalism</h4>
+            <h4 className="flat"><a className="link" href="https://www.wowhead.com/classic/spell=2259/alchemy">Alchemy</a> / <a href="https://www.wowhead.com/classic/spell=9134/herbalism" className="link">Herbalism</a></h4>
             <p>Single handedly the most important / viable hardcore profession for Druid.  Druid utilizes every stat and elixirs provide INT AGI STR and STAM as well as regen, absorb potions of different schools of magic, elixir of mongoose and more. Mana potions are much more valuable to a druid than healing potions and alchemy allows you to craft them easily, as these are harder to find on vendors. Druids can pick herbs in form which makes it easy to run around and gather what you need.</p>
           </section>
-          <section>
+          <section id="quests">
             <h2>Class quests</h2>
             <ul className="unstyled">
               <li>
                 <h4 className="flat">Bear form (Level 10)</h4>
                 <p>Speak to the Great Bear Spirit in Moonglade to take on the Trial of the Bear. These Moonkins HIT HARD - it's easier to be successful closer to 12. - Root and slowly kill to ensure defeat! Try not to go out of mana</p>
-                <p><strong>Alliance -</strong> Defeat Lunaclaw and speak to her to gain the strength of heart (Darkshore, Moonkin caves outside Auberdine.) </p>
-                <p><strong>Horde -</strong> Defeat Lunaclaw and speak to her to gain the strength of heart ((Barrens, just outside of Camp Taurajo)) </p>
+                <p className="factionItem"><img src={alliance} width={24} alt="Alliance" /> Defeat Lunaclaw and speak to her to gain the strength of heart (Darkshore, Moonkin caves outside Auberdine.) </p>
+                <p className="factionItem"><img src={horde} width={24} alt="Horde" /> Defeat Lunaclaw and speak to her to gain the strength of heart ((Barrens, just outside of Camp Taurajo)) </p>
               </li>
               <li>
                 <h4 className="flat">Aquatic Form (Level 16)</h4>
                 <p>Shiny bauble in Moonglade Lake.  Be careful not to drown!</p>
-                <p><strong>Alliance -</strong>One piece is in north Darkshore (48,11) and one is in Westfall (21,36) Be careful of reef sharks!</p>
-                <p><strong>Horde -</strong> First piece (29, 29), Silverpine Forest and second, (56,8) Sludgen Fen, Barrens
+                <p className="factionItem"><img src={alliance} width={24} alt="Alliance" />One piece is in north Darkshore (48,11) and one is in Westfall (21,36) Be careful of reef sharks!</p>
+                <p className="factionItem"><img src={horde} width={24} alt="Horde" /> First piece (29, 29), Silverpine Forest and second, (56,8) Sludgen Fen, Barrens
 </p>
               </li>
             </ul>
           </section>
-          <section>
+          <section id="danger">
+            <h2>Dealing with danger</h2>
+            <p>Use Nature’s Grasp as soon as you realize you’re in trouble.  Keep rejuvenate rolling as long as you have the mana to do it. Stay in bear form as much as possible as you run.</p>
+            <p>At Level 26, you get cat dash.  Make sure to use this defensively to escape bad situations and continue to use Nature’s Grasp.</p>
+            <p>As soon as you get Feral Charge (bear) you can actually use it to create space to get away from bad situations.  You can charge a nearby critter or a less dangerous enemy to make space between a bad situation and your character. With the furor talent, you will have enough rage to bash instantly or to feral charge as soon as you go into bear form.</p>
+            <p>Cheetah form becomes your get of out jail free card at level 30, but still make sure to use Nature’s Grasp and go bear to mitigate if you are taking heavy damage or getting dazed (especially useful if being hit by melee mobs). <strong>Do not rely on cheetah in every situation - it is one of your weakest forms and should be treated as such.</strong></p>
+          </section>
+          <section id="forms">
             <h2>Using your forms efficiently</h2>
             <ul className="unstyled">
               <li>
@@ -185,7 +211,7 @@ export default function FeralDruid() {
               </li>
             </ul>
           </section>
-          <section>
+          <section id="stats">
             <h2>Stat Analysis</h2>
             <table>
               <thead>
@@ -219,6 +245,57 @@ export default function FeralDruid() {
               </li>
             </ul>
             <p>Do not shy away from gear with intellect or spirit because of shapeshifting, spellcasting and health & mana regeneration!</p>
+          </section>
+          <section id="macros">
+            <h2>Important Macros</h2>
+            <h4>Travel form from any form, Aquatic form in the water</h4>
+            <pre className="macro">
+              #showtooltip<br />
+              /cancelform [noform:2/4]<br />
+              /cast [swimming] Aquatic Form; [noswimming] Travel Form
+            </pre>
+            <h4>Consumable use in Bear Form (not spammable)</h4>
+            <pre className="macro">
+              #showtooltip Greater Stoneshield Potion<br />
+              /cancelform<br />
+              /use Greater Stoneshield Potion<br />
+              /cast Dire Bear Form
+            </pre>
+            <h4>Basic Powershift (not spammable) (replace with bear form for bear powershift)</h4>
+            <pre className="macro">
+              #showtooltip<br />
+              /cancelform<br />
+              /cast Cat Form
+            </pre>
+            <h4>Powershift Cat with any instant consumable use  (not spammable)</h4>
+            <pre className="macro">
+              #showtooltip Major Mana Potion<br />
+              /cancelform<br />
+              /use Major Mana Potion<br />
+              /cast Cat Form
+            </pre>
+            <h4>Powershift Cat (spammable)</h4>
+            <pre className="macro">
+              #showtooltip Cat Form<br />
+              /cancelform [noform:3]<br />
+              /cast [form:3] Cat Form<br />
+              /cast [noform:3] !Cat Form
+            </pre>
+            <h4>Powershift Cat with any instant consumable use  (spammable)</h4>
+            <pre className="macro">
+              #showtooltip Major Mana Potion<br />
+              /cancelform [noform:3]<br />
+              /cast [form:3] Cat Form<br />
+              /use Major Mana Potion<br />
+              /cast [noform:3] !Cat Form
+            </pre>
+            <h4>Any form into Dash</h4>
+            <pre className="macro">
+              #showtooltip Dash<br />
+              /cancelform [noform:3]<br />
+              /cast [noform:3] Cat Form<br />
+              /cast Dash
+            </pre>
           </section>
         </div>
       </div>
