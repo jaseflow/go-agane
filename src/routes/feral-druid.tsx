@@ -2,6 +2,8 @@ import feralCover from '../assets/builds/feral-druid.png';
 
 import { CLASSES } from '../data';
 
+import { Link } from 'react-router-dom';
+
 import alliance from '../assets/alliance.png';
 import horde from '../assets/horde.png';
 
@@ -11,6 +13,7 @@ export default function FeralDruid() {
 
   const druid = CLASSES.find(c => c.name === 'Druid');
   const s = druid?.specs.find(s => s.name === 'Feral');
+  const otherSpecs = druid?.specs.filter(s => s.name !== 'Feral');
 
   const navItems = [
     'terms',
@@ -24,8 +27,45 @@ export default function FeralDruid() {
     'macros',
   ]
 
+  const specsList = otherSpecs?.map((s) => {
+
+    const specName = `${s.name.toLowerCase().replace(/ /g, "-")}-druid`
+    const url = new URL(`../assets/builds/${specName}.png`, import.meta.url).href;
+
+    return (
+      <li>
+        <Link to={`/${specName}`}>
+          <div className="spec">
+            <div className="specCard" key={`spec-${specName}`}>
+              <div className="specBg" style={{ backgroundImage: `url(${url})`}}></div>
+              <div className="specWrapper">
+                {specName === 'feral-druid' && <div className="specBadge">New</div>}
+                <h4 className="specTitle">{s.name}</h4>
+                <div className="stats">
+                  <p>Survability <strong className={s.survivability}>{s.survivability}</strong></p>
+                  <p>Damage <strong className={s.damage}>{s.damage}</strong></p>
+                  <p>Utility <strong className={s.utility}>{s.utility}</strong></p>
+                </div>
+              </div>
+            </div>
+            <span className="specLink link">Read guide</span>
+          </div>
+        </Link>
+      </li>
+    )
+
+  });
+
   return (
     <div className="container">
+      <header className="guideHeader">
+        <h1 className="pressed">Feral Druid Classic Hardcore</h1>
+        <div className="stats stats--inline stats--large">
+          <p>Survability <strong className={s?.survivability}>{s?.survivability}</strong></p>
+          <p>Damage <strong className={s?.damage}>{s?.damage}</strong></p>
+          <p>Utility <strong className={s?.utility}>{s?.utility}</strong></p>
+        </div>
+      </header>
       <div className="guideGrid">
         <div>
           <div className="guideSidebar">
@@ -62,14 +102,6 @@ export default function FeralDruid() {
           </div>
         </div>
         <div className="guideContent">
-          <header className="guideHeader">
-            <h1 className="pressed">Feral Druid Classic Hardcore</h1>
-            <div className="stats stats--inline stats--large">
-              <p>Survability <strong className={s?.survivability}>{s?.survivability}</strong></p>
-              <p>Damage <strong className={s?.damage}>{s?.damage}</strong></p>
-              <p>Utility <strong className={s?.utility}>{s?.utility}</strong></p>
-            </div>
-          </header>
           <section>
             <p className="guideIntro">Druid is a shapeshifter class that is fairly unique to World of Warcraft. Their versatility and ability to fill any role (tank, melee, caster, or healer) makes them the true jack of all trades. There are so many different ways to play a Druid that it can morph to a players desired role, that they feel most comfortable with. No matter what your playstyle for hardcore is, there is a build or style that will likely feel comfortable for you. Don't be overwhelmed by the sheer amount of skills and abilities! Druid is easy for beginners with a high skill cap, but there is lots of room in between.</p>
               <p className="guideIntro">This is our recommended talent and starter guide for someone new to the class or having trouble surviving in Hardcore.</p>
@@ -216,7 +248,7 @@ export default function FeralDruid() {
             <table>
               <thead>
                 <th>Stat</th>
-                <th>Weight (Normalized)</th>
+                <th>Weight (Pre Heart of the Wild)</th>
               </thead>
               <tbody>
                 <tr>
@@ -235,7 +267,6 @@ export default function FeralDruid() {
                 </tr>
               </tbody>
             </table>
-            <p><small>* These stats are PRE Heart of the Wild</small></p>
             <p>Druid isn’t incredibly gear or weapon reliant but there is still value to keeping an arsenal of gear in your bags!</p>
             <ul>
               <li><strong>For Innervate - </strong>You will want a weapon with a lot of Spirit if you can find one (Spirit will increase the amount of mana your regenerate)</li>
@@ -297,6 +328,10 @@ export default function FeralDruid() {
               /cast Dash
             </pre>
           </section>
+          <h2>Other Druid builds</h2>
+          <ul className="unstyled specs">
+            {specsList}
+          </ul>
         </div>
       </div>
     </div>
